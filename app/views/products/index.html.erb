@@ -1,1 +1,35 @@
-it's alive!!
+<% @products.each do |product| %>
+
+
+
+<%# if product.seller? %>
+<!-- <div class="panel panel-info user-txn"> -->
+<%# else %>
+<!-- <div class="panel panel-success user-txn"> -->
+<%#end %>
+
+<!-- Where product_status = 1 and current user is not the seller -->
+<div class="panel panel-success user-txn">
+	
+	<div class="panel-heading">
+		<h4><span><%= product.name %></span>
+		<span class="pull-right">$<%= product.price %></span></h4>
+	</div>
+
+	<div class="panel-body">
+		<span class="col-xs-3">
+		<img class="img-rounded img-responsive pull-left txn-product-image" src="<%= product.image_url %>" />
+		</span>
+	
+		<div class="col-xs-6 txn-product-info">
+	  	<p><%= product.description %></p>
+	  	<div class="align-buttons-to-bottom view-buy-buttons">
+				<button type="button" class="btn btn-xs btn-default">View Listing</button>
+				<button type="button" class="btn btn-xs btn-default">Make Offer</button>
+			</div>
+		</div>
+
+</div>	
+
+<% end %>
+
