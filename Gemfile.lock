@@ -79,11 +79,11 @@ GEM
     json (1.8.1)
     jwt (0.1.13)
       multi_json (>= 1.5)
+    kgio (2.9.2)
     koala (1.9.0)
       addressable
       faraday
       multi_json
-    kgio (2.9.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
