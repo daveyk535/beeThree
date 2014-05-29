@@ -6,6 +6,9 @@ gem 'rails', '4.1.1'
 gem 'pg'
 gem 'aws-sdk'
 #gem 'paperclip', github: 'thoughtbot/paperclip'
+# gem 'unicorn'
+gem 'sidekiq'
+
 
 # front-end gems
 gem 'sass-rails', '~> 4.0.3'
@@ -39,6 +42,7 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'better_errors', '~> 1.1.0'
 	gem 'binding_of_caller', '~> 0.7.2'
+  # gem 'unicorn-rails'
 end
 
 group :production do

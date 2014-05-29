@@ -9,8 +9,8 @@ class UsersProductsController < ApplicationController
 		seller_txn = buyer_txn.transact_with
 		seller_txn.update(txn_status_id: pending.id)
 
-		# TODO: kick-off sidekiq worker sending email to seller!
-		BeeThreeMailer.buyer_offer.deliver
+		EmailWorker.perform_async(current_user.email, current_user.first_name)
+		# BeeThreeMailer.buyer_offer.deliver
 
 		redirect_to users_path, notice: "We'll let #{seller_txn.user.first_name} know you're ready to buy the #{seller_txn.product.name.downcase}. Keep an eye out for an email from us once #{seller_txn.user.first_name} confirms."
 	end
