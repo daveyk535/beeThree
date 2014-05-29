@@ -6,7 +6,6 @@ gem 'rails', '4.1.1'
 gem 'pg'
 gem 'aws-sdk'
 #gem 'paperclip', github: 'thoughtbot/paperclip'
-# gem 'unicorn'
 gem 'sidekiq'
 
 
@@ -48,7 +47,6 @@ end
 group :production do
 	gem 'rails_12factor'
 end
-
 
 # Use unicorn as the app server
 # gem 'unicorn'

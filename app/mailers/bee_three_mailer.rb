@@ -1,5 +1,5 @@
 class BeeThreeMailer < ActionMailer::Base
-  # include Sidekiq::Mailer
+  
   default from: "beeThreeGA@gmail.com"
 
   def signup_confirmation(user)
