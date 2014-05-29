@@ -1,4 +1,4 @@
-class EmailWorker
+class SellerAcceptWorker
    include Sidekiq::Worker
 
   def perform(email, name)

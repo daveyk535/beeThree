@@ -9,8 +9,7 @@ class UsersProductsController < ApplicationController
 		seller_txn = buyer_txn.transact_with
 		seller_txn.update(txn_status_id: pending.id)
 
-		# EmailWorker.perform_async(current_user.email, current_user.first_name)
-		BuyerAcceptWorker.perform_async(buyer_txn.user.email, buyer_txn.user.first_name)
+		BuyerOfferWorker.perform_async(buyer_txn.user.email, buyer_txn.user.first_name)
 
 		redirect_to users_path, notice: "We'll let #{seller_txn.user.first_name} know you're ready to buy the #{seller_txn.product.name.downcase}. Keep an eye out for an email from us once #{seller_txn.user.first_name} confirms."
 	end
@@ -36,8 +35,8 @@ class UsersProductsController < ApplicationController
     # save payment info in order to follow up on status later
     venmo_info = charge_parsed['data']['payment']
 		new_charge = VenmoCharge.create(payment_id: venmo_info['id'], payment_status: venmo_info['status'], payment_created_at: venmo_info['date_created'].to_datetime, product_id: seller_txn.product.id)
-
-		# TODO: kick-off sidekiq worker sending email to buyer
+		
+		SellerAcceptWorker.perform_async(seller_txn.user.email, seller_txn.user.first_name)
 
 		redirect_to users_path, notice: "Sold! We've sent a Venmo charge to #{buyer_txn.user.first_name}. Please get in touch with them about delivering the #{seller_txn.product.name.downcase}."
 	end
