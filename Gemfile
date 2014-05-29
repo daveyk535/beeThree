@@ -5,7 +5,7 @@ ruby '2.1.1'
 gem 'rails', '4.1.1'
 gem 'pg'
 gem 'aws-sdk'
-#gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'sidekiq'
 
 
